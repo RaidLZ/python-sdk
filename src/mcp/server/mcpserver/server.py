@@ -192,7 +192,7 @@ class MCPServer(Generic[LifespanResultT]):
                 raise ValueError("Cannot specify both auth_server_provider and token_verifier")
             if not auth_server_provider and not token_verifier:  # pragma: no cover
                 raise ValueError("Must specify either auth_server_provider or token_verifier when auth is enabled")
-        elif auth_server_provider or token_verifier:  # pragma: no cover
+        elif auth_server_provider or token_verifier:
             raise ValueError("Cannot specify auth_server_provider or token_verifier without auth settings")
 
         self._auth_server_provider = auth_server_provider
@@ -821,7 +821,7 @@ class MCPServer(Generic[LifespanResultT]):
             ```
         """
 
-        def decorator(  # pragma: no cover
+        def decorator(
             func: Callable[[Request], Awaitable[Response]],
         ) -> Callable[[Request], Awaitable[Response]]:
             self._custom_starlette_routes.append(
@@ -829,7 +829,7 @@ class MCPServer(Generic[LifespanResultT]):
             )
             return func
 
-        return decorator  # pragma: no cover
+        return decorator
 
     async def run_stdio_async(self) -> None:
         """Run the server using stdio transport."""
