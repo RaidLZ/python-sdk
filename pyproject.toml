@@ -135,6 +135,7 @@ include = [
     "src/mcp",
     "src/mcp-types/mcp_types",
     "tests",
+    "docs_src",
     "examples/servers",
     "examples/snippets",
     "examples/clients",
@@ -151,6 +152,9 @@ executionEnvironments = [
         ".",
     ], reportUnusedFunction = false, reportPrivateUsage = false },
     { root = "examples/servers", reportUnusedFunction = false },
+    # docs_src/ holds the complete, runnable code examples included into docs/*.md.
+    # Decorated (@mcp.tool/...) module-level functions are never called by name.
+    { root = "docs_src", reportUnusedFunction = false },
 ]
 
 [tool.ruff]
